@@ -15,7 +15,6 @@ use Doctrine\ORM\Query;
  */
 class UserRepository extends EntityRepository
 {
-
     public function findByApiKey($key)
     {
         $qb = $this->_em->createQueryBuilder();
@@ -23,6 +22,18 @@ class UserRepository extends EntityRepository
             ->from('AppBundle:User', 'u')
             ->where('u.apiKey = :key')
             ->setParameter('key', $key);
+        $query = $qb->getQuery();
+
+        return $this->getSingleResult($query);
+    }
+
+    public function findByEmail($email)
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('u')
+            ->from('AppBundle:User', 'u')
+            ->where('u.email = :email')
+            ->setParameter('email', $email);
         $query = $qb->getQuery();
 
         return $this->getSingleResult($query);

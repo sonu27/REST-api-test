@@ -2,12 +2,12 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * User
  */
-class User
+class User implements AdvancedUserInterface
 {
     /**
      * @var string
@@ -180,5 +180,54 @@ class User
     public function getComments()
     {
         return $this->comments;
+    }
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+
+    public function getPassword()
+    {
+        return;
+    }
+
+    public function getSalt()
+    {
+        return;
+    }
+
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
+    {
+        return true;
+    }
+
+    public function __toString()
+    {
+        return $this->email;
     }
 }
