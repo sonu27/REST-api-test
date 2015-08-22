@@ -25,6 +25,11 @@ class User
     private $email;
 
     /**
+     * @var string
+     */
+    private $apiKey;
+
+    /**
      * @var integer
      */
     private $id;
@@ -109,6 +114,29 @@ class User
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set apiKey
+     *
+     * @param string $apiKey
+     * @return User
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * Get apiKey
+     *
+     * @return string 
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
     }
 
     /**

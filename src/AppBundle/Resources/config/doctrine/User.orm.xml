@@ -7,6 +7,7 @@
     <field name="forename" type="string" column="forename" length="100"/>
     <field name="surname" type="string" column="surname" length="100"/>
     <field name="email" type="string" column="email" length="255"/>
+    <field name="apiKey" type="string" column="api_key" length="60"/>
     <one-to-many target-entity="Comment" mapped-by="user" field="comments"/>
   </entity>
 </doctrine-mapping>
