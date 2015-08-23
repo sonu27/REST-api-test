@@ -29,6 +29,11 @@ class Rating
      */
     private $comment;
 
+    /**
+     * @var \AppBundle\Entity\User
+     */
+    private $user;
+
 
     /**
      * Set good
@@ -92,7 +97,7 @@ class Rating
      * @param \AppBundle\Entity\Comment $comment
      * @return Rating
      */
-    public function setComment(\AppBundle\Entity\Comment $comment = null)
+    public function setComment(\AppBundle\Entity\Comment $comment)
     {
         $this->comment = $comment;
 
@@ -107,5 +112,28 @@ class Rating
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     * @return Rating
+     */
+    public function setUser(\AppBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

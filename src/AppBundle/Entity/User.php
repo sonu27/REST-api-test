@@ -40,11 +40,17 @@ class User implements AdvancedUserInterface
     private $comments;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $ratings;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -63,7 +69,7 @@ class User implements AdvancedUserInterface
     /**
      * Get forename
      *
-     * @return string 
+     * @return string
      */
     public function getForename()
     {
@@ -86,7 +92,7 @@ class User implements AdvancedUserInterface
     /**
      * Get surname
      *
-     * @return string 
+     * @return string
      */
     public function getSurname()
     {
@@ -109,7 +115,7 @@ class User implements AdvancedUserInterface
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -132,7 +138,7 @@ class User implements AdvancedUserInterface
     /**
      * Get apiKey
      *
-     * @return string 
+     * @return string
      */
     public function getApiKey()
     {
@@ -142,7 +148,7 @@ class User implements AdvancedUserInterface
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -150,36 +156,69 @@ class User implements AdvancedUserInterface
     }
 
     /**
-     * Add comments
+     * Add comment
      *
-     * @param \AppBundle\Entity\Comment $comments
+     * @param \AppBundle\Entity\Comment $comment
      * @return User
      */
-    public function addComment(\AppBundle\Entity\Comment $comments)
+    public function addComment(\AppBundle\Entity\Comment $comment)
     {
-        $this->comments[] = $comments;
+        $this->comments[] = $comment;
 
         return $this;
     }
 
     /**
-     * Remove comments
+     * Remove comment
      *
-     * @param \AppBundle\Entity\Comment $comments
+     * @param \AppBundle\Entity\Comment $comment
      */
-    public function removeComment(\AppBundle\Entity\Comment $comments)
+    public function removeComment(\AppBundle\Entity\Comment $comment)
     {
-        $this->comments->removeElement($comments);
+        $this->comments->removeElement($comment);
     }
 
     /**
      * Get comments
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Add rating
+     *
+     * @param \AppBundle\Entity\Rating $rating
+     * @return User
+     */
+    public function addRating(\AppBundle\Entity\Rating $rating)
+    {
+        $this->ratings[] = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Remove rating
+     *
+     * @param \AppBundle\Entity\Rating $rating
+     */
+    public function removeRating(\AppBundle\Entity\Rating $rating)
+    {
+        $this->ratings->removeElement($rating);
+    }
+
+    /**
+     * Get ratings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRatings()
+    {
+        return $this->ratings;
     }
 
     public function getRoles()

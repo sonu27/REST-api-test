@@ -9,5 +9,6 @@
     <field name="email" type="string" column="email" length="255"/>
     <field name="apiKey" type="string" column="api_key" length="60"/>
     <one-to-many target-entity="Comment" mapped-by="user" field="comments"/>
+    <one-to-many target-entity="Rating" mapped-by="user" field="ratings"/>
   </entity>
 </doctrine-mapping>
