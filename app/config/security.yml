@@ -9,12 +9,12 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-#        main:
-#            anonymous: ~
+        main:
+            anonymous: ~
 
-        secured_area:
-            pattern: ^/
-            stateless: true
-            simple_preauth:
-                authenticator: api_key_authenticator
-            provider: api_key_user_provider
+#        secured_area:
+#            pattern: ^/
+#            stateless: true
+#            simple_preauth:
+#                authenticator: api_key_authenticator
+#            provider: api_key_user_provider
