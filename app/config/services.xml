@@ -6,6 +6,13 @@
     <service id="api_key_user_provider" class="AppBundle\Security\ApiKeyUserProvider">
       <argument type="service" id="user_repository"/>
     </service>
+    <service id="comment_repository" class="Doctrine\ORM\EntityRepository" factory-method="getRepository" factory-service="doctrine.orm.entity_manager">
+      <argument>AppBundle\Entity\Comment</argument>
+    </service>
+    <service id="rating" class="AppBundle\Service\Rating">
+      <argument type="service" id="user_repository"/>
+      <argument type="service" id="comment_repository"/>
+    </service>
     <service id="user_repository" class="Doctrine\ORM\EntityRepository" factory-method="getRepository" factory-service="doctrine.orm.entity_manager">
       <argument>AppBundle\Entity\User</argument>
     </service>
