@@ -53,7 +53,7 @@ class Rating
      *
      * @return boolean 
      */
-    public function getGood()
+    public function isGood()
     {
         return $this->good;
     }
