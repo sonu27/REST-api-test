@@ -153,4 +153,23 @@ class Comment
     {
         return $this->user;
     }
+
+    /**
+     * Get the total score (sum of ratings)
+     *
+     * @return integer
+     */
+    public function getTotalScore()
+    {
+        $score = 0;
+        foreach ($this->getRatings() as $rating) {
+            if ($rating->isGood()) {
+                $score++;
+            } else {
+                $score--;
+            }
+        }
+
+        return $score;
+    }
 }
