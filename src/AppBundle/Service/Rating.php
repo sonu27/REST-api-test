@@ -1,6 +1,8 @@
 <?php
 namespace AppBundle\Service;
 
+use AppBundle\Entity\CommentRepository;
+use AppBundle\Entity\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 
 class Rating
@@ -8,7 +10,7 @@ class Rating
     private $userRepo;
     private $commentRepo;
 
-    public function __construct($userRepo, $commentRepo)
+    public function __construct(UserRepository $userRepo, CommentRepository $commentRepo)
     {
         $this->userRepo    = $userRepo;
         $this->commentRepo = $commentRepo;
@@ -19,7 +21,7 @@ class Rating
         if ($this->validateRequest($request)) {
             $userId   = $request->request->get('user');
             $thumbsUp = $request->request->get('rating');
-            $user     = $this->userRepo->findById($userId);
+            $user     = $this->userRepo->findOneById($userId);
 
             $comment->addRating($this->createRating($user, $thumbsUp));
             $this->commentRepo->save($comment);

@@ -39,6 +39,11 @@ class UserRepository extends EntityRepository
         return $this->getSingleResult($query);
     }
 
+    public function findOneById($id)
+    {
+        return $this->_em->findOneById($id);
+    }
+
     private function getSingleResult(Query $query)
     {
         try {

@@ -12,4 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentRepository extends EntityRepository
 {
+    public function save(Comment $comment)
+    {
+        $this->_em->persist($comment);
+        $this->_em->flush($comment);
+    }
 }
